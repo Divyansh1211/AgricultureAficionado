@@ -1,0 +1,29 @@
+  {
+  "project_info": {
+    "project_number": "630585285718",
+    "project_id": "agriculture-aficionado",
+    "storage_bucket": "agriculture-aficionado.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630585285718:android:ce2bfd421404e40eb3aff7",
+        "android_client_info": {
+          "package_name": "com.example.agriculture_aficionado"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASW-DMl-vGNvcKLDrfRx8utg1nBOWGdgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
