@@ -1,4 +1,5 @@
 import 'package:agriculture_aficionado/Components/Rounded_button.dart';
+import 'package:agriculture_aficionado/Screens/category.dart';
 import 'package:agriculture_aficionado/Screens/chat_screen.dart';
 import 'package:agriculture_aficionado/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -78,7 +79,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email!, password: password!);
                     if (newUser != null) {
-                      Navigator.pushNamed(context, ChatScreen.id);
+                      Navigator.pushNamed(context, CategoryScreen.id);
                     }
                     setState(() {
                       showSpinner = false;

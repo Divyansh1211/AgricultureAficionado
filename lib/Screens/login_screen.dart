@@ -1,4 +1,5 @@
 import 'package:agriculture_aficionado/Components/Rounded_button.dart';
+import 'package:agriculture_aficionado/Screens/category.dart';
 import 'package:agriculture_aficionado/Screens/chat_screen.dart';
 import 'package:agriculture_aficionado/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -78,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email!, password: password!);
                     if (user != null) {
-                      Navigator.pushNamed(context, ChatScreen.id);
+                      Navigator.pushNamed(context, CategoryScreen.id);
                     }
                     setState(() {
                       showSpinner = false;

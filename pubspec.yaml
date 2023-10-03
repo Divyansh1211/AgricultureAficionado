@@ -42,6 +42,12 @@ dependencies:
   animated_text_kit: ^4.2.2
   image_picker: ^1.0.4
   firebase_storage: ^11.2.7
+  http: ^1.1.0
+  location: ^5.0.3
+  intl: ^0.18.1
+  ionicons: ^0.2.2
+  eva_icons_flutter: ^3.1.0
+  weather_icons: ^3.0.0
 
 dev_dependencies:
   flutter_test:

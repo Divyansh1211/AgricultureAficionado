@@ -60,11 +60,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
                 TypewriterAnimatedTextKit(
-                  speed: Duration(milliseconds: 60),
-                  text: ['Aficionado'],
+                  speed: Duration(milliseconds: 100),
+                  text: ['Smart Crop'],
                   textStyle: TextStyle(
                     color: Colors.grey,
-                    fontSize: 45.0,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.w900,
                   ),
                 ),

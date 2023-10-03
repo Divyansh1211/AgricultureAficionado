@@ -73,7 +73,7 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               icon: const Icon(
                 Icons.close,
-                color: Colors.white,
+                color: Colors.black,
               ),
               onPressed: () {
                 logout();
@@ -81,9 +81,9 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
         title: const Text(
           'Community Tab',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFFF5C228),
       ),
       body: SafeArea(
         child: Column(
