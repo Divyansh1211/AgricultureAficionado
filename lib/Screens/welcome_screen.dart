@@ -53,16 +53,17 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               children: <Widget>[
                 Hero(
                   tag: 'logo',
-                  child: Container(
+                  child: SizedBox(
+                    height: 60.0,
                     child:
                         Image.asset('images/orange-agriculture-icon-png-0.png'),
-                    height: 60.0,
                   ),
                 ),
+                // ignore: deprecated_member_use
                 TypewriterAnimatedTextKit(
                   speed: Duration(milliseconds: 100),
                   text: ['Smart Crop'],
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     color: Colors.grey,
                     fontSize: 40.0,
                     fontWeight: FontWeight.w900,
@@ -70,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 48.0,
             ),
             Rounded_Button(

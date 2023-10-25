@@ -6,6 +6,7 @@ import 'package:agriculture_aficionado/constants.dart';
 import 'package:agriculture_aficionado/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
@@ -39,12 +40,12 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser!;
-      if (user != null) {
-        loggedInUser = user;
+      final user = _auth.currentUser!;
+      loggedInUser = user;
+        } catch (e) {
+      if (kDebugMode) {
+        print(e);
       }
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -56,10 +57,14 @@ class _ChatScreenState extends State<ChatScreen> {
       final uploadTask = storageReference.putFile(imageFile);
       await uploadTask.whenComplete(() {});
       final imageUrl = await storageReference.getDownloadURL();
-      print('secuessfully uploaded image: $imageUrl');
+      if (kDebugMode) {
+        print('secuessfully uploaded image: $imageUrl');
+      }
       return imageUrl;
     } catch (e) {
-      print('Error uploading image: $e');
+      if (kDebugMode) {
+        print('Error uploading image: $e');
+      }
       return '';
     }
   }
@@ -83,7 +88,7 @@ class _ChatScreenState extends State<ChatScreen> {
           'Community Tab',
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Color(0xFFF5C228),
+        backgroundColor: const Color(0xFFF5C228),
       ),
       body: SafeArea(
         child: Column(
@@ -124,7 +129,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       style: kSendButtonTextStyle,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Padding(
@@ -145,7 +150,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           });
                         }
                       },
-                      child: Icon(Icons.camera_alt),
+                      child: const Icon(Icons.camera_alt),
                     ),
                   ),
                 ],
@@ -173,7 +178,7 @@ class MessageStream extends StatelessWidget {
       builder: (context, snapshot) {
         try {
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.lightBlueAccent,
               ),
@@ -198,7 +203,7 @@ class MessageStream extends StatelessWidget {
           return Expanded(
             child: ListView(
               reverse: true,
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
               children: messageBubbles,
             ),
           );
