@@ -1,9 +1,7 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:agriculture_aficionado/Components/mesaage_bubble.dart';
 import 'package:agriculture_aficionado/Screens/welcome_screen.dart';
 import 'package:agriculture_aficionado/constants.dart';
-import 'package:agriculture_aficionado/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -25,7 +23,6 @@ class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
   String? messagetext;
-  Uint8List? _image;
 
   void logout() async {
     await FirebaseAuth.instance.signOut();
@@ -42,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
     try {
       final user = _auth.currentUser!;
       loggedInUser = user;
-        } catch (e) {
+    } catch (e) {
       if (kDebugMode) {
         print(e);
       }
@@ -203,12 +200,15 @@ class MessageStream extends StatelessWidget {
           return Expanded(
             child: ListView(
               reverse: true,
-              padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
               children: messageBubbles,
             ),
           );
         } catch (e) {
-          print(e);
+          if (kDebugMode) {
+            print(e);
+          }
         }
         throw (e) {};
       },

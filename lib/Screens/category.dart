@@ -1,4 +1,5 @@
 import 'package:agriculture_aficionado/Components/category_list.dart';
+import 'package:agriculture_aficionado/Screens/analysis.dart';
 import 'package:agriculture_aficionado/Screens/chat_screen.dart';
 import 'package:agriculture_aficionado/Screens/weather_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             onTap: () {
               Navigator.pushNamed(context, WeatherScreen.id);
             },
-            child: Row(
+            child: const Row(
               children: [
                 Text(
                   '28°',
@@ -34,8 +35,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
           ),
         ],
-        backgroundColor: Color(0xFFF5C228),
-        title: Image(
+        backgroundColor: const Color(0xFFF5C228),
+        title: const Image(
           image: AssetImage('images/Logo_inverted.png'),
           height: 40,
         ),
@@ -56,8 +57,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
             CategoryList(
               txt: 'Disease Detection',
             ),
-            CategoryList(
-              txt: 'Expert Analysis',
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, Analysis.id);
+              },
+              child: CategoryList(
+                txt: 'AI Analysis',
+              ),
             ),
           ],
         ),

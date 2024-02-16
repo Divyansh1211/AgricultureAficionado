@@ -1,3 +1,4 @@
+import 'package:agriculture_aficionado/Screens/analysis.dart';
 import 'package:agriculture_aficionado/Screens/category.dart';
 import 'package:agriculture_aficionado/Screens/chat_screen.dart';
 import 'package:agriculture_aficionado/Screens/registration_screen.dart';
@@ -24,14 +25,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: WelcomeScreen.id,
+      initialRoute: Analysis.id,
       routes: {
         WeatherScreen.id: (context) => WeatherScreen(),
         LoginScreen.id: (context) => const LoginScreen(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
         ChatScreen.id: (context) => ChatScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
-        CategoryScreen.id: (context) => CategoryScreen(),
+        CategoryScreen.id: (context) => const CategoryScreen(),
+        Analysis.id: (context) => const Analysis(),
       },
     );
   }
