@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class TxtWidget extends StatelessWidget {
   TxtWidget(
       {required this.label, this.color, this.fontsize = 18, this.fontWeight});

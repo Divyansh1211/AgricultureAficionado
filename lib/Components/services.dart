@@ -18,7 +18,7 @@ class Services {
                 fontsize: 16,
               ),
             ),
-            Flexible(
+            const Flexible(
               flex: 2,
               child: DropDownWidget(),
             ),

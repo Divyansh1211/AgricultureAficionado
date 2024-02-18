@@ -1,6 +1,5 @@
 import 'package:agriculture_aficionado/Components/Rounded_button.dart';
 import 'package:agriculture_aficionado/Screens/category.dart';
-import 'package:agriculture_aficionado/Screens/chat_screen.dart';
 import 'package:agriculture_aficionado/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
