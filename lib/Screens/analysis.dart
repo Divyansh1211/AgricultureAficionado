@@ -1,5 +1,4 @@
 import 'package:agriculture_aficionado/Components/api_service.dart';
-import 'package:agriculture_aficionado/Components/services.dart';
 import 'package:agriculture_aficionado/Model/chatModel.dart';
 import 'package:agriculture_aficionado/Widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
@@ -44,9 +43,7 @@ class _AnalysisState extends State<Analysis> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () async {
-              await Services.showModelScreen(context);
-            },
+            onPressed: () async {},
             icon: const Icon(Icons.more_vert),
           ),
         ],

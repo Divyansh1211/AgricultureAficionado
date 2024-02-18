@@ -1,4 +1,5 @@
 import 'package:agriculture_aficionado/Widgets/text_widget.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 class ChatWidget extends StatelessWidget {
@@ -28,11 +29,30 @@ class ChatWidget extends StatelessWidget {
                 width: 8,
               ),
               Expanded(
-                child: TxtWidget(
-                  label: msg,
-                  color: Colors.black,
-                ),
-              )
+                child: chatIndex == 0
+                    ? TxtWidget(
+                        label: msg,
+                        color: Colors.black,
+                      )
+                    : DefaultTextStyle(
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            TyperAnimatedText(
+                              msg.trim(),
+                            ),
+                          ],
+                          isRepeatingAnimation: false,
+                          repeatForever: false,
+                          displayFullTextOnTap: true,
+                          totalRepeatCount: 1,
+                        ),
+                      ),
+              ),
             ],
           ),
         ],
