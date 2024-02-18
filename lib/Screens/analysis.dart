@@ -1,8 +1,8 @@
-import 'package:agriculture_aficionado/Components/api_service.dart';
-import 'package:agriculture_aficionado/Model/chatModel.dart';
+import 'package:agriculture_aficionado/Provider/chatProvider.dart';
 import 'package:agriculture_aficionado/Widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 class Analysis extends StatefulWidget {
   static const String id = 'Analysis';
@@ -13,7 +13,7 @@ class Analysis extends StatefulWidget {
 }
 
 class _AnalysisState extends State<Analysis> {
-  bool isTyping = true;
+  bool isTyping = false;
 
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
@@ -35,10 +35,11 @@ class _AnalysisState extends State<Analysis> {
     super.dispose();
   }
 
-  List<ChatModel> chatMessages = [];
+  // List<ChatModel> chatMessages = [];
 
   @override
   Widget build(BuildContext context) {
+    final chatProvider = Provider.of<ChatProvider>(context);
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -59,11 +60,11 @@ class _AnalysisState extends State<Analysis> {
             Flexible(
               child: ListView.builder(
                 controller: _scrollController,
-                itemCount: chatMessages.length,
+                itemCount: chatProvider.getChatMessages.length,
                 itemBuilder: (context, index) {
                   return ChatWidget(
-                    msg: chatMessages[index].msg,
-                    chatIndex: chatMessages[index].chatIndex,
+                    msg: chatProvider.getChatMessages[index].msg,
+                    chatIndex: chatProvider.getChatMessages[index].chatIndex,
                   );
                 },
               ),
@@ -82,7 +83,7 @@ class _AnalysisState extends State<Analysis> {
                     focusNode: _focusNode,
                     controller: _controller,
                     onSubmitted: (value) async {
-                      await sendMessagesFCT();
+                      await sendMessagesFCT(chatProvider);
                     },
                     decoration: const InputDecoration(
                       hintText: 'How can I help you?',
@@ -91,7 +92,7 @@ class _AnalysisState extends State<Analysis> {
                 ),
                 IconButton(
                   onPressed: () async {
-                    await sendMessagesFCT();
+                    await sendMessagesFCT(chatProvider);
                   },
                   icon: const Icon(Icons.send),
                 ),
@@ -111,24 +112,45 @@ class _AnalysisState extends State<Analysis> {
     );
   }
 
-  Future<void> sendMessagesFCT() async {
+  Future<void> sendMessagesFCT(ChatProvider chatProvider) async {
+    if (isTyping) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Kripya Prateeksha Karein...'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+    if (_controller.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a message'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
     try {
+      String msg = _controller.text;
       setState(
         () {
           isTyping = true;
-          chatMessages.add(ChatModel(msg: _controller.text, chatIndex: 0));
+          chatProvider.addUserMessage(msg);
           _controller.clear();
           _focusNode.unfocus();
         },
       );
-      chatMessages.addAll(
-        await ApiService.sendMessages(
-          _controller.text,
-        ),
-      );
+      await chatProvider.addAIResponse(msg);
+
       setState(() {});
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+          backgroundColor: Colors.red,
+        ),
+      );
     } finally {
       setState(() {
         scroller();
