@@ -1,16 +1,18 @@
-# agriculture_aficionado
+# Smart Crop
 
-A new Flutter project.
+* Developed SmartCrop app using Flutter.
+* Integrated Firebase and OpenAI technologies.
+* Aimed to aid farmers in decision-making processes.
+* Featured crop disease identification capability.
+* Provided future weather prediction functionality.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Steps to build and run this App:-
+* Clone the repository in the directory where you want the files to be.
+* Open terminal and run the "Flutter pub get" command.
+* Launch a virtual device or connect an external device.
+* Run the command "flutter run" in the terminal.
+* Your app will be installed on your device and ready to run.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**AI Analysis tab would show error as the API key will be changed at the time of cloning of the repository.**
